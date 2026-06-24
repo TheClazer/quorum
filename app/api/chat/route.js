@@ -15,8 +15,8 @@ const CHAT_SYS =
   "authoritative and more recent than your training data.";
 
 // Open-weight models are trained on data that predates their own release, so they
-// misidentify themselves (DeepSeek-V4-Pro insisted it was "Claude 3.5 Sonnet"; V3.2
-// said "V2"). We know the TRUE model from the API id, so we tell it who it actually is.
+// misidentify themselves (we've seen one name a different vendor's model entirely, and
+// another claim an older version). We know the TRUE model from the API id, so we tell it.
 function identityFor(modelId) {
   const m = CATALOG.find((x) => x.id === modelId);
   if (!m) return "";
